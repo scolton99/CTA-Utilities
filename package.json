@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/server/App.js",
-    "gcp-build": "cd src/server && tsc && cd ../client && tsc && cd ../.. && sass src/client/scss/cta.scss public/stylesheets/cta.css --style compressed && uglifyjs public/scripts/cta.js -o public/scripts/cta.min.js"
+    "gcp-build": "cd src/client && tsc && cd ../server && tsc && cd ../.. && sass src/client/scss/cta.scss public/stylesheets/cta.css --style compressed && uglifyjs public/scripts/cta.js -o public/scripts/cta.min.js"
   },
   "author": "Spencer Colton",
   "license": "ISC",
