@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="29687d8c-038a-418a-84c2-433d9aed7902" name="cta.sdc.sx" url="https://cta.sdc.sx/">
+        <fileTransfer rootFolder="/var/www/html/cta-signboard" accessType="SFTP" host="cta.sdc.sx" port="22" sshConfigId="be0683ca-7a4a-4f0b-b6ed-ad358f5eb649" sshConfig="scolton@cta.sdc.sx:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

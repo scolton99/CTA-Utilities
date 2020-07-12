@@ -1,0 +1,43 @@
+div.alert-container {
+  background-color: black;
+  color: white;
+  height: 100vh;
+  padding: 2vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  > header.alert-header {
+    font-size: 4vw;
+
+    span.alert-header-text {
+      margin-left: 1vw;
+    }
+  }
+
+  > div.alert-body {
+    font-weight: bold;
+    font-size: 4vw;
+  }
+
+  > footer.alert-footer {
+    display: flex;
+
+    > span.alert-footer-type-image-container {
+      margin-right: 1vw;
+    }
+
+    > span.alert-footer-type {
+      margin-right: 2vw;
+    }
+
+    img {
+      height: 3vw;
+      width: auto;
+    }
+
+    font-size: 3vw;
+    color: #aaa;
+  }
+}

@@ -1,0 +1,58 @@
+div.arrivals {
+  background-color: #000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+
+  div.train-entry {
+    &:not([data-line="yellow"]) > div.train-entry-body {
+      color: white;
+    }
+
+    &[data-line="yellow"] > div.train-entry-body {
+      color: black;
+    }
+
+    display: flex;
+    margin-bottom: 1px;
+    width: 100%;
+
+    > div.train-entry-number {
+      background-color: #333;
+      color: #ddd;
+      font-weight: bold;
+      padding: 0.25em 0.5em 0 0.5em;
+      font-size: 2.1vw;
+    }
+
+    > div.train-entry-body {
+      flex-grow: 1;
+      padding: 0.25em 0.5em;
+      display: flex;
+      align-items: center;
+
+      > div.train-entry-details {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        > span.train-entry-run-info {
+          font-size: 2.1vw;
+        }
+
+        > span.train-entry-dest {
+          font-weight: bold;
+          font-size: 5vw;
+        }
+      }
+
+      > div.train-entry-timing {
+        font-size: 5vw;
+      }
+    }
+  }
+}

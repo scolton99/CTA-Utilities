@@ -1,0 +1,11 @@
+.hidden {
+  opacity: 0;
+}
+
+div.gone:not(p) {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}

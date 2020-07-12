@@ -1,0 +1,22 @@
+@import 'util';
+@import 'colors';
+
+@import 'alerts';
+@import 'arrivals';
+@import 'info';
+
+html, body {
+  font-family: sans-serif;
+  height: 100%;
+  margin: 0;
+  background-color: black;
+}
+
+body > div {
+  transition: opacity 1s ease-out;
+}
+
+
+
+
+

@@ -1,0 +1,43 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="station_name" value=stationName)
+        meta(name="station_id" value=stationId)
+        title CTA Info Sign
+        link(rel="stylesheet" href="/static/stylesheets/cta.css")
+        script(src="https://requirejs.org/docs/release/2.3.6/minified/require.js" data-main="static/scripts/cta.min")
+        script(src="https://kit.fontawesome.com/04a7ede306.js" crossorigin="anonymous")
+    body
+        .arrivals.hidden.gone
+        .info
+            #datetime
+                #time
+                    span#timefield >
+                    span#ampm-marker
+                #date
+            #weather
+                #temperature
+                    span#temperature-text &deg;
+                    span#temperature-icon-container
+                        img#temperature-icon(src="" alt="Weather Image")
+                #weather-description
+            #no-smoking
+                #no-smoking-icon-container
+                    img#no-smoking-icon(src="/static/images/no-smoking.png" alt="No Smoking")
+                #no-smoking-text No smoking
+            #cta-logo-pane
+                #cta-logo-container
+                    img#cta-logo(src="/static/images/cta-logo.png" alt="CTA Logo")
+        .alerts.hidden.gone
+            .alert-container
+                header.alert-header
+                    span.alert-icon-container
+                        span.fas.fa-exclamation-circle
+                    span.alert-header-text Customer Alert
+                .alert-body
+                footer.alert-footer
+                    span.alert-footer-type-image-container
+                        img#alert-footer-type-image(src="" alt="")
+                    span.alert-footer-type
+                    span.alert-footer-timestamp

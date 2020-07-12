@@ -1,0 +1,16 @@
+$lines: (
+        "red": #C60C30,
+        "blue": #00A1DE,
+        "brown": #62361B,
+        "green": #009B3A,
+        "orange": #F9461C,
+        "pink": #E27EA6,
+        "purple": #522398,
+        "yellow": #F9E300
+);
+
+@each $line, $color in $lines {
+  div.train-entry[data-line="#{$line}"] > div.train-entry-body {
+    background-color: $color;
+  }
+}
