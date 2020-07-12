@@ -56,6 +56,8 @@ export class CTASignboard {
         this.time_tick_interval = window.setInterval(this.time_tick, 500);
 
         this.cycle_timeout = window.setTimeout(this.cycle(), 9000);
+
+        window.addEventListener("resize", this.rerender_arrivals);
     };
 
     update_arrivals = async () => {
@@ -103,13 +105,21 @@ export class CTASignboard {
         alert_timestamp.innerHTML = alert.timestamp_string();
     };
 
+    calculate_max_arrivals = (): number => {
+        const w = window.innerWidth;
+        return Math.floor(window.innerHeight / (1.15 * ((0.05 + 0.021) * w)));
+    };
+
     rerender_arrivals = () => {
         const arrivals_dom = this.panes[0];
         while (arrivals_dom.firstElementChild)
             arrivals_dom.removeChild(arrivals_dom.firstElementChild);
 
+        const max_scn: number = this.calculate_max_arrivals();
+        const real_max = Math.min(max_scn, this.arrivals.length);
+
         const arrivals_children: Array<Node> = [];
-        for (let i: number = 0; i < this.arrivals.length; ++i) {
+        for (let i: number = 0; i < real_max; ++i) {
             arrivals_children.push(this.arrivals[i].gen_dom(i + 1));
         }
 
