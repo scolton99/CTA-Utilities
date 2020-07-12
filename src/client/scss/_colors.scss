@@ -1,3 +1,5 @@
+@use "sass:map";
+
 $lines: (
         "red": #C60C30,
         "blue": #00A1DE,
@@ -12,5 +14,11 @@ $lines: (
 @each $line, $color in $lines {
   div.train-entry[data-line="#{$line}"] > div.train-entry-body {
     background-color: $color;
+  }
+}
+div.arrivals {
+  div.train-entry[data-line="green"].inverted > div.train-entry-body {
+    background-color: #fff;
+    color: map.get($lines, "green");
   }
 }

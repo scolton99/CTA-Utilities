@@ -39,6 +39,10 @@ export default class Arrival extends SharedArrival {
         container.classList.add("train-entry");
         container.dataset.line = this.line.toLowerCase();
 
+        if (this.line === "Green" && this.destination === "Cottage Grove") {
+            container.classList.add("inverted");
+        }
+
         const number_dom = document.createElement("div");
         number_dom.classList.add("train-entry-number");
         number_dom.textContent = `${number}`;
