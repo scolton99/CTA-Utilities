@@ -15,7 +15,21 @@ const gen_webhook_response = (text: string) => {
                     ]
                 }
             }
-        ]
+        ],
+        "payload": {
+            "google": {
+                "expectUserResponse": false,
+                "richResponse": {
+                    "items": [
+                        {
+                            "simpleResponse": {
+                                "textToSpeech": text
+                            }
+                        }
+                    ]
+                }
+            }
+        }
     };
 };
 
