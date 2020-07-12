@@ -5,6 +5,14 @@
       "args": ["cp", "gs://cta-backend/private/app.yaml", "app.yaml"]
     },
     {
+      "name": "gcr.io/cloud-builders/npm",
+      "args": ["install"]
+    },
+    {
+      "name": "gcr.io/cloud-builders/npm",
+      "args": ["run", "gcp-build"]
+    },
+    {
       "name": "gcr.io/cloud-builders/gcloud",
       "args": ["app", "deploy"],
       "timeout": "600s"

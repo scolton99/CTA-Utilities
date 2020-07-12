@@ -13,13 +13,5 @@
 .git
 .gitignore
 
-dist/**
-!dist/.gitkeep
-
-public/scripts/*
-!public/scripts/.gitkeep
-public/stylesheets/*
-!public/stylesheets/.gitkeep
-
 # Node.js dependencies:
 node_modules/
