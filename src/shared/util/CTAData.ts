@@ -1,4 +1,4 @@
-export const line_map = {
+export const line_map: { [key: string]: string } = {
     "Red": "Red",
     "Org": "Orange",
     "Y": "Yellow",

@@ -1,5 +1,6 @@
 import SharedArrival from '../../shared/models/Arrival';
 import CachedAPIRequest from "../util/CachedAPIRequest";
+import { line_map } from "../../shared/util/CTAData";
 
 interface ArrivalAPIResponseEntry {
     staId: string,
@@ -44,7 +45,7 @@ export default class Arrival extends SharedArrival {
         this.stop_description = arrival.stpDe;
 
         this.run_number = parseInt(arrival.rn);
-        this.line = arrival.rt;
+        this.line = line_map[arrival.rt];
 
         this.destination = arrival.destNm;
 
