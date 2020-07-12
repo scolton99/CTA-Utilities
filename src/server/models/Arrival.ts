@@ -1,6 +1,7 @@
 import SharedArrival from '../../shared/models/Arrival';
 import CachedAPIRequest from "../util/CachedAPIRequest";
 import { line_map } from "../../shared/util/CTAData";
+import moment from "moment-timezone";
 
 interface ArrivalAPIResponseEntry {
     staId: string,
@@ -49,8 +50,8 @@ export default class Arrival extends SharedArrival {
 
         this.destination = arrival.destNm;
 
-        this.prediction_ts = new Date(arrival.prdt);
-        this.arrival_ts = new Date(arrival.arrT);
+        this.prediction_ts = moment.tz(arrival.prdt, "America/Chicago").toDate();
+        this.arrival_ts = moment.tz(arrival.arrT, "America/Chicago").toDate();
 
         this.direction = parseInt(arrival.trDr);
     }
