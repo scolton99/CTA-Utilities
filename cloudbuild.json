@@ -1,7 +1,7 @@
 {
   "steps": [
     {
-      "name": "gcr.io/gloud-builders/gsutil",
+      "name": "gcr.io/cloud-builders/gsutil",
       "args": ["cp", "gs://cta-backend/private/app.yaml", "app.yaml"]
     },
     {
