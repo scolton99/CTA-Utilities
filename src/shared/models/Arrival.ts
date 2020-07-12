@@ -17,5 +17,5 @@ export default abstract class Arrival {
 
     direction: number;
 
-    countdown = (): number => (Math.round((this.arrival_ts.getTime() - this.prediction_ts.getTime()) / (1000 * 60)));
+    countdown = (): number => (Math.round((this.arrival_ts.getTime() - Date.now()) / (1000 * 60)));
 }
