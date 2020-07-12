@@ -26,6 +26,7 @@
   "devDependencies": {
     "eslint": "^7.4.0",
     "sass": "^1.26.10",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.6",
+    "uglify-js": "^3.10.0"
   }
 }
