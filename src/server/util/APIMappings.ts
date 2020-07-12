@@ -18,7 +18,7 @@ const api_mappings: APIMappings = {
 };
 
 export const expirations: { [key: string]: number } = {
-    "arrivals": 0,
+    "arrivals": 5 * 60,
     "alerts": 5 * 60,
     "weather": 15 * 60
 };
