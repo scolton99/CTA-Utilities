@@ -116,11 +116,13 @@ export class CTASignboard {
             arrivals_dom.removeChild(arrivals_dom.firstElementChild);
 
         const max_scn: number = this.calculate_max_arrivals();
-        const real_max = Math.min(max_scn, this.arrivals.length);
+        const real_arrivals = this.arrivals.filter((x: Arrival) => x.arrival_ts.getTime() > Date.now());
+
+        const real_max = Math.min(max_scn, real_arrivals.length);
 
         const arrivals_children: Array<Node> = [];
         for (let i: number = 0; i < real_max; ++i) {
-            arrivals_children.push(this.arrivals[i].gen_dom(i + 1));
+            arrivals_children.push(real_arrivals[i].gen_dom(i + 1));
         }
 
         arrivals_dom.append(...arrivals_children);
