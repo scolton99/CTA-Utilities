@@ -16,6 +16,7 @@ export default class CachedAPIRequest {
     send = async (): Promise<string> => {
         const cached_data: string = await redis_get(`${this.api_name}_${this.identifier}`);
         if (cached_data !== null) {
+            console.log(`Returning cached data. No external API hit for ${this.api_name}_${this.identifier}.`);
             return cached_data;
         }
 
@@ -25,8 +26,10 @@ export default class CachedAPIRequest {
         const raw_res = await fetch(request_uri);
         const raw_data: string = await raw_res.text();
 
-        redis_set(`${this.api_name}_${this.identifier}`, raw_data);
-        redis_expire(`${this.api_name}_${this.identifier}`, expirations[this.api_name]);
+        console.log(`No cache (or cache expired) for ${this.api_name}_${this.identifier}. External API hit: ${request_uri}`);
+
+        redis_set(`${this.api_name}_${this.identifier}`, raw_data).then();
+        redis_expire(`${this.api_name}_${this.identifier}`, expirations[this.api_name]).then();
 
         return raw_data;
     };
