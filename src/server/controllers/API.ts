@@ -9,7 +9,7 @@ const router = Router();
 router.use(cors);
 
 router.get('/arrivals/:station', async (req, res, _next) => {
-    const arrivals = await Arrival.getAll(parseInt(req.params.station));
+    const arrivals = await Arrival.getCurrent(parseInt(req.params.station));
 
     res.json(arrivals);
 });

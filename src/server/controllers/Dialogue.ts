@@ -46,7 +46,7 @@ router.post('/', bodyParser.json(), async (req, res, _next) => {
         return res.json(gen_webhook_response(`Sorry, I couldn't find a station named ${station} on the ${line} line.`));
     }
 
-    const arrivals: Array<Arrival> = await Arrival.getAll(st_code);
+    const arrivals: Array<Arrival> = await Arrival.getCurrent(st_code);
 
     const dest_code = get_destination_code(destination, line, station);
 

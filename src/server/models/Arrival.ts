@@ -73,6 +73,12 @@ export default class Arrival extends SharedArrival {
         return Arrival.fromAPIResponse(JSON.parse(response));
     };
 
+    public static getCurrent = async (station_id: number): Promise<Array<Arrival>> => {
+        const response = await Arrival.getAll(station_id);
+
+        return response.filter((x: Arrival) => x.arrival_ts.getTime() > Date.now());
+    };
+
     get_time_string = (): string => {
         const time = this.countdown();
         return time == 1 ? "in one minute" : time == 0 ? "now" : `in ${time} minutes`;
