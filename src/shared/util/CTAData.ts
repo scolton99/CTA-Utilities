@@ -449,13 +449,9 @@ export const uri_safe_station_id_map: { [key: string]: number } = {
  * @param station   The name of the station.
  * @param line      The name of the line.
  */
-const resolved_station = (station: string, line: string): [string, number, number] => {
-    const matching_stations = line_stations[line].filter(x => x[0] === station);
-
-    if (matching_stations.length === 0) return null;
-
-    return matching_stations[0];
-};
+const resolved_station = (station: string, line: string): [string, number, number] => (
+    line_stations[line].find(x => x[0] === station)
+);
 
 /**
  * Based on a station name and a line name, returns a station code.
@@ -472,8 +468,8 @@ export const station_id = (station: string, line: string): number => {
 /**
  * Given a destination and a line, verifies that that line operates toward that destination at least part of the time.
  *
- * @param destination
- * @param line
+ * @param destination The human-readable destination name (case-sensitive).
+ * @param line        The line (color).
  */
 export const validate_destination = (destination: string, line: string): boolean => {
     return destinations[destination].includes(line);
@@ -482,7 +478,7 @@ export const validate_destination = (destination: string, line: string): boolean
 /**
  * Given a destination, return all lines that ever run service to that destination.
  *
- * @param destination   The destination.
+ * @param destination   The human-readable destination (case-sensitive).
  */
 export const find_possible_lines = (destination: string): Array<string> => {
     if (!destinations[destination]) return null;
@@ -492,9 +488,9 @@ export const find_possible_lines = (destination: string): Array<string> => {
 
 /**
  *
- * @param destination
- * @param line
- * @param station
+ * @param destination   The human-readable destination (case-sensitive).
+ * @param line          The name of the line (color, case-sensitive).
+ * @param station       The name of the station.
  */
 export const get_destination_code = (destination: string, line: string, station: string): number => {
     if (static_destination_codes[line][destination])
