@@ -25,6 +25,7 @@
       <w>mawr</w>
       <w>montrose</w>
       <w>oakton</w>
+      <w>openweathermap</w>
       <w>pexp</w>
       <w>prdt</w>
       <w>ridgeland</w>
@@ -37,6 +38,7 @@
       <w>thorndale</w>
       <w>timefield</w>
       <w>tmst</w>
+      <w>transitchicago</w>
       <w>webhook</w>
     </words>
   </dictionary>

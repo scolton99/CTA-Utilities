@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Main SCSS" pattern="file[cta-signboard]:src/client/scss/*&amp;&amp;!file:src/client/scss/_*.scss" />
+</component>

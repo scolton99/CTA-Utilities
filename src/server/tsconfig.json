@@ -26,9 +26,13 @@
       "range-parser",
       "redis",
       "serve-static"
-    ]
+    ],
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "lib": ["es2016"]
   },
   "include": [
-    "**/*"
+    "./**/*",
+    ".eslintrc.js"
   ]
 }

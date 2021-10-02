@@ -1,13 +1,18 @@
-import SharedAlert from '../../shared/models/Alert';
-import CachedAPIRequest from "../util/CachedAPIRequest";
-import { ServiceType } from "../../shared/util/CTAData";
+import SharedAlert, { AlertJSON } from '../../shared/models/Alert';
+import CachedAPIRequest from '../util/CachedAPIRequest';
+import { ServiceType } from '../../shared/util/CTAData';
 
+/*
+ * Have to disable ESLint since this is the CTA API and
+ * I have no control over naming conventions
+ */
+/* eslint-disable @typescript-eslint/naming-convention */
 interface AlertAPIResponseEntry {
     AlertId: string,
     Headline: string,
     ShortDescription: string,
     FullDescription: {
-        "#cdata-section": string,
+        '#cdata-section': string
     },
     SeverityScore: string,
     SeverityColor: string,
@@ -18,7 +23,7 @@ interface AlertAPIResponseEntry {
     TBD: string,
     MajorAlert: string,
     AlertURL: {
-        "#cdata-section": string
+        '#cdata-section': string
     },
     ImpactedService: {
         Service: {
@@ -29,7 +34,7 @@ interface AlertAPIResponseEntry {
             ServiceBackColor: string,
             ServiceTextColor: string,
             ServiceURL: {
-                "#cdata-section": string
+                '#cdata-section': string
             }
         }
     }
@@ -40,9 +45,10 @@ interface AlertAPIResponse {
         TimeStamp: string,
         ErrorCode: string,
         ErrorMessage: string | null,
-        Alert: Array<AlertAPIResponseEntry>
+        Alert?: Array<AlertAPIResponseEntry>
     }
 }
+/* eslint-enable @typescript-eslint/naming-convention */
 
 export default class Alert extends SharedAlert {
     private constructor(alert: AlertAPIResponseEntry) {
@@ -59,32 +65,39 @@ export default class Alert extends SharedAlert {
         this.description = alert.ShortDescription;
         this.impact = alert.Impact;
     }
-
-    private static fromAPIResponse = (response: AlertAPIResponse): Array<Alert> => {
-        const { CTAAlerts: { Alert: alerts } } = response;
-
-        const alerts_obj: Array<Alert> = [];
-
-        for (const alert of alerts) {
-            alerts_obj.push(new Alert(alert));
-        }
-
-        return alerts_obj;
-    };
-
-    public static getAll = async (station_id: number): Promise<Array<Alert>> => {
-        const response = await (new CachedAPIRequest("alerts", `${station_id}`).send());
-
+    
+    public static async getAll(stationId: number, uuid?: string): Promise<Array<Alert>> {
+        const request = new CachedAPIRequest('alerts', `${stationId}`);
+        request.setRequestUUID(uuid);
+        
+        const response = await request.send();
+        
         return Alert.fromAPIResponse(JSON.parse(response));
-    };
+    }
 
-    toJSON = () => ({
-        start: this.start,
-        end: this.end,
-        icon: this.icon,
-        id: this.id,
-        headline: this.headline,
-        description: this.description,
-        impact: this.impact
-    });
+    private static fromAPIResponse(response: AlertAPIResponse): Array<Alert> {
+        const { CTAAlerts: { Alert: entries } } = response;
+
+        const alerts: Array<Alert> = [];
+
+        if (!entries)
+            return alerts;
+        
+        for (const alert of entries)
+            alerts.push(new Alert(alert));
+
+        return alerts;
+    }
+    
+    public toJSON(): AlertJSON {
+        return {
+            start:       this.start,
+            end:         this.end,
+            icon:        this.icon,
+            id:          this.id,
+            headline:    this.headline,
+            description: this.description,
+            impact:      this.impact
+        };
+    }
 }

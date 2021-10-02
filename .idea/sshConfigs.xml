@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="cta.sdc.sx" id="be0683ca-7a4a-4f0b-b6ed-ad358f5eb649" port="22" nameFormat="DESCRIPTIVE" username="scolton" />
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="cta.sdc.sx" id="be0683ca-7a4a-4f0b-b6ed-ad358f5eb649" port="22" nameFormat="DESCRIPTIVE" username="scolton" />
     </configs>
   </component>
 </project>

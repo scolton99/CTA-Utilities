@@ -1,38 +1,48 @@
+export interface AlertJSON {
+    start:       Date,
+    end:         Date | null,
+    icon:        string,
+    id:          number,
+    headline:    string,
+    description: string,
+    impact:      string
+}
+
 export default abstract class Alert {
-    start: Date;
-    end: Date;
+    protected start: Date;
+    protected end:   Date | null;
+    
+    protected icon: string;
+    
+    protected id: number;
+    
+    protected headline:    string;
+    protected description: string;
+    protected impact:      string;
 
-    icon: string;
-
-    id: number;
-
-    headline: string;
-    description: string;
-    impact: string;
-
-    timestamp_string = (): string => {
-        const date_options = {
-            weekday: "short",
-            month: "short",
-            day: "2-digit"
+    public timestampString(): string {
+        const dateOptions: Readonly<Record<string, string>> = {
+            weekday: 'short',
+            month:   'short',
+            day:     '2-digit'
         };
 
-        const time_options = {
-            hour: "numeric",
-            minute: "2-digit"
+        const timeOptions: Readonly<Record<string, string>> = {
+            hour:   'numeric',
+            minute: '2-digit'
         };
 
-        const start_date = this.start.toLocaleDateString("en-US", date_options);
-        const start_time = this.start.toLocaleTimeString("en-US", time_options)
-            .replace(/\s/g, "");
+        const startDate = this.start.toLocaleDateString('en-US', dateOptions);
+        const startTime = this.start.toLocaleTimeString('en-US', timeOptions)
+            .replace(/\s/g, '');
 
         if (this.end === null || this.end.getTime() === 0) {
-            return `(${start_date} ${start_time} &mdash; ??)`;
+            return `(${startDate} ${startTime} &mdash; ??)`;
         }
 
-        const end_date = this.end.toLocaleDateString("en-US", date_options);
-        const end_time = this.end.toLocaleTimeString("en-US", time_options);
+        const endDate = this.end.toLocaleDateString('en-US', dateOptions);
+        const endTime = this.end.toLocaleTimeString('en-US', timeOptions);
 
-        return end_date === start_date ? `(${start_date} ${start_time} &mdash; ${end_time})` : `(${start_date} ${start_time} &mdash; ${end_date} ${end_time})`;
-    };
+        return endDate === startDate ? `(${startDate} ${startTime} &mdash; ${endTime})` : `(${startDate} ${startTime} &mdash; ${endDate} ${endTime})`;
+    }
 }
