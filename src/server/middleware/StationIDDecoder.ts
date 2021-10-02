@@ -1,5 +1,5 @@
 import { Handler } from 'express';
-import { uriSafeStationIdMap as stationIdMap } from '../util/CTAData';
+import { uriSafeStationIdMap as stationIdMap } from '../../shared/util/CTAData';
 
 declare module 'express-serve-static-core' {
     interface Request {

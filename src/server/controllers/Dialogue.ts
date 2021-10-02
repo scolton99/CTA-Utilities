@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { validate_destination, station_id, get_destination_code } from '../../shared/util/CTAData';
+import { validateDestination, stationId, getDestinationCode } from '../../shared/util/CTAData';
 import Arrival from '../models/Arrival';
 
 const router = Router();
@@ -37,18 +37,18 @@ router.post('/', bodyParser.json(), async (req, res) => {
     const { station, destination, line: lineRaw } = req.body.queryResult.parameters;
     const line = lineRaw[0].toUpperCase() + lineRaw.slice(1);
 
-    if (!validate_destination(destination, line)) {
+    if (!validateDestination(destination, line)) {
         return res.json(genWebhookResponse(`${line} line trains do not run to ${destination}.`));
     }
 
-    const stationCode = station_id(station, line);
-    if (stationCode === -1) {
+    const stationCode = stationId(station, line);
+    if (!stationCode) {
         return res.json(genWebhookResponse(`Sorry, I couldn't find a station named ${station} on the ${line} line.`));
     }
-
+    
     const arrivals: Array<Arrival> = await Arrival.getCurrent(stationCode);
 
-    const destinationCode = get_destination_code(destination, line, station);
+    const destinationCode = getDestinationCode(destination, line, station);
 
     if (destinationCode === -1) {
         return res.json(genWebhookResponse(`Sorry, trains to ${destination} don't seem to run at ${station}.`));
@@ -56,13 +56,13 @@ router.post('/', bodyParser.json(), async (req, res) => {
 
     const directedArrivals = arrivals.filter((x: Arrival) => {
         if (line === 'Green' && (destination === 'Ashland/63rd' || destination === 'Cottage Grove')) {
-            return x.destination === destination && x.direction === destinationCode;
+            return x.getDestination() === destination && x.getDirection() === destinationCode;
         } else {
-            return x.direction === destinationCode;
+            return x.getDirection() === destinationCode;
         }
     });
 
-    directedArrivals.sort((x: Arrival, y: Arrival) => (x.arrivalTs.getTime() - y.arrivalTs.getTime()));
+    directedArrivals.sort((x: Arrival, y: Arrival) => (x.getArrivalTs().getTime() - y.getArrivalTs().getTime()));
 
     const destinationString = destination === 'Loop' ? 'the Loop' : destination;
 

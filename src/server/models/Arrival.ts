@@ -83,6 +83,18 @@ export default class Arrival extends SharedArrival {
         const time = this.countdown(new Date());
         return time === 1 ? 'in one minute' : time === 0 ? 'now' : `in ${time} minutes`;
     }
+    
+    public getDestination(): string {
+        return this.destination;
+    }
+    
+    public getDirection(): number {
+        return this.direction;
+    }
+    
+    public getArrivalTs(): Date {
+        return this.arrivalTs;
+    }
 
     public toJSON(): ArrivalJSON {
         return {

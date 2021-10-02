@@ -15,7 +15,6 @@
     },
     "types": [
       "body-parser",
-      "color-name",
       "connect",
       "express",
       "express-serve-static-core",
