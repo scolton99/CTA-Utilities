@@ -1,9 +1,15 @@
 import IDataStore from './IDataStore';
 import fetch from 'node-fetch';
 import { serviceUri } from '../util/AppEngine';
+import Logger from '../util/Logger';
 
 export default class MemcacheDataStore implements IDataStore {
     private readonly SERVICE_URI: string = serviceUri('cache');
+    private readonly LOGGER: Logger = new Logger(MemcacheDataStore);
+    
+    public constructor() {
+        this.LOGGER.warn(`Memcache service URI: ${this.SERVICE_URI}`);
+    }
     
     public async expire(key: string, expiration: number): Promise<void> {
         const res = await fetch(this.SERVICE_URI, {
