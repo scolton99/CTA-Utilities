@@ -12,7 +12,7 @@ export default class MemcacheDataStore implements IDataStore {
     }
     
     public async expire(key: string, expiration: number): Promise<void> {
-        const res = await fetch(this.SERVICE_URI, {
+        const res = await fetch(`${this.SERVICE_URI}/expire`, {
             method: 'POST',
             body: JSON.stringify({ key, expiration })
         });
@@ -22,7 +22,7 @@ export default class MemcacheDataStore implements IDataStore {
     }
     
     public async get(key: string): Promise<string | null> {
-        const res = await fetch(this.SERVICE_URI, {
+        const res = await fetch(`${this.SERVICE_URI}/get`, {
             method: 'POST',
             body: JSON.stringify({ key })
         });
@@ -39,7 +39,7 @@ export default class MemcacheDataStore implements IDataStore {
     }
     
     public async set(key: string, value: string): Promise<void> {
-        const res = await fetch(this.SERVICE_URI, {
+        const res = await fetch(`${this.SERVICE_URI}/set`, {
             method: 'POST',
             body: JSON.stringify({ key, value })
         });
