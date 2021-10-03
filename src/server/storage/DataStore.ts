@@ -2,6 +2,7 @@ import MemoryDataStore from './MemoryDataStore';
 import IDataStore from './IDataStore';
 import RedisDataStore from './RedisDataStore';
 import Logger from '../util/Logger';
+import MemcacheDataStore from './MemcacheDataStore';
 
 const { DATA_STORE } = process.env;
 
@@ -19,6 +20,11 @@ export default ((): IDataStore => {
             case 'REDIS': {
                 LOGGER.warn('Using Redis as data cache');
                 store = new RedisDataStore();
+                break;
+            }
+            case 'MEMCACHE': {
+                LOGGER.warn('Using memcache as data cache');
+                store = new MemcacheDataStore();
                 break;
             }
             default: {

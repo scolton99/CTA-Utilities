@@ -22,7 +22,7 @@ export default class Arrival extends SharedArrival {
     }
 
     public static async getArrivals(stationId: number): Promise<Array<Arrival>> {
-        const resRaw = await fetch(`/api/arrivals/${stationId}`);
+        const resRaw = await fetch(`/train/api/arrivals/${stationId}`);
         const res = await resRaw.json();
 
         const arrivals: Array<Arrival> = [];

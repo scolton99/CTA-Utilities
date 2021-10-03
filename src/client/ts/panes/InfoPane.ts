@@ -27,11 +27,7 @@ export default class InfoPane extends AbstractPane {
     public override prepare = async (): Promise<void> => void(0);
     
     private readonly updateWeather = async (): Promise<void> => {
-        const newWeatherData = await fetch('/api/weather');
-        const weatherJson = await newWeatherData.json();
-        
-        this.currentWeather = new Weather(weatherJson);
-        
+        this.currentWeather = await Weather.get();
         this.reRenderWeather();
     };
     

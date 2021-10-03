@@ -2,6 +2,7 @@
   <dictionary name="scolton">
     <words>
       <w>appid</w>
+      <w>appspot</w>
       <w>armitage</w>
       <w>ashland</w>
       <w>berwyn</w>
@@ -23,6 +24,7 @@
       <w>kostner</w>
       <w>mapid</w>
       <w>mawr</w>
+      <w>memcache</w>
       <w>montrose</w>
       <w>oakton</w>
       <w>openweathermap</w>

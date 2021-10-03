@@ -32,6 +32,13 @@ export default class Weather {
         this.MAIN       = weatherObj.weather[0].main;
     }
     
+    public static async get(): Promise<Weather> {
+        const newWeatherData = await fetch('/train/api/weather');
+        const weatherJson    = await newWeatherData.json();
+        
+        return new Weather(weatherJson);
+    }
+    
     private static readonly kelvinToFahrenheit = (temp: number): number => (
         Math.round((temp - 273.15) * (9.0 / 5.0) + 32.0)
     );

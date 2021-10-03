@@ -16,7 +16,7 @@ export default class Alert extends SharedAlert {
     }
 
     public static async getAlerts(stationId: number): Promise<Array<Alert>> {
-        const alertsRaw = await fetch(`/api/alerts/${stationId}`);
+        const alertsRaw = await fetch(`/train/api/alerts/${stationId}`);
         const alertsJson = await alertsRaw.json();
 
         const alerts: Array<Alert> = [];

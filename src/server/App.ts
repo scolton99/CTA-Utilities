@@ -4,7 +4,7 @@ dotenv.config();
 import Logger from './util/Logger';
 
 import express from 'express';
-import apiRouter from './controllers/API';
+import trainApiRouter from './controllers/TrainAPI';
 import dialogueRouter from './controllers/Dialogue';
 import stationIdDecoder from './middleware/StationIDDecoder';
 import notFound from './middleware/NotFound';
@@ -38,14 +38,14 @@ const setup = (): void => {
         LOGGER.warn('Express serving static assets directory -- please disable this in production.');
     }
 
-    SERVER.use('/api', apiRouter);
+    SERVER.use('/train/api', trainApiRouter);
     SERVER.use('/dialogue', dialogueRouter);
 
-    SERVER.get('/:station', stationIdDecoder, (req, res, next) => {
+    SERVER.get('/train/:station', stationIdDecoder, (req, res, next) => {
         if (!req.stationId)
         { next(); return; }
     
-        res.render('index', {
+        res.render('train', {
             stationName: req.params.station,
             stationId: req.stationId
         });
