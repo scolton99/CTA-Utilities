@@ -6,7 +6,7 @@
     <envs>
       <env name="DEVELOPMENT" value="true" />
       <env name="DATA_STORE" value="memcache" />
-      <env name="GOOGLE_CLOUD_APPLICATION" value="cta-backend-283018" />
+      <env name="GOOGLE_CLOUD_PROJECT" value="cta-backend-283018" />
       <env name="GAE_APPLICATION" value="uc~null" />
     </envs>
     <method v="2" />

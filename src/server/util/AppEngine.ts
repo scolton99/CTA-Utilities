@@ -1,5 +1,7 @@
 const { GAE_APPLICATION, GOOGLE_CLOUD_PROJECT } = process.env;
 
+console.log(`GAE_APPLICATION: ${GAE_APPLICATION}`);
+
 const region = (): string | null => (
     GAE_APPLICATION ? GAE_APPLICATION.split('~')[0] : null
 );
