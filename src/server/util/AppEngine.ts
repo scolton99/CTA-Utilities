@@ -5,5 +5,5 @@ const region = (): string | null => (
 );
 
 export const serviceUri = (service: string): string => (
-    `https://${service}-dot-${GOOGLE_CLOUD_PROJECT}.${region}.r.appspot.com`
+    `https://${service}-dot-${GOOGLE_CLOUD_PROJECT}.${region()}.r.appspot.com`
 );
