@@ -11,26 +11,31 @@ let store: IDataStore | undefined;
     
 export default ((): IDataStore => {
     if (!store) {
-        switch (DATA_STORE) {
-            case 'MEMORY': {
-                LOGGER.warn('Using in-memory data cache');
-                store = new MemoryDataStore();
-                break;
-            }
-            case 'REDIS': {
-                LOGGER.warn('Using Redis as data cache');
-                store = new RedisDataStore();
-                break;
-            }
-            case 'MEMCACHE': {
-                LOGGER.warn('Using memcache as data cache');
-                store = new MemcacheDataStore();
-                break;
-            }
-            default: {
-                LOGGER.warn('No data cache specified - using memory cache');
-                store = new MemoryDataStore();
-                break;
+        if (!DATA_STORE) {
+            LOGGER.warn('No data cache specified - using memory cache');
+            store = new MemoryDataStore();
+        } else {
+            switch (DATA_STORE.toUpperCase()) {
+                case 'MEMORY': {
+                    LOGGER.warn('Using in-memory data cache');
+                    store = new MemoryDataStore();
+                    break;
+                }
+                case 'REDIS': {
+                    LOGGER.warn('Using Redis as data cache');
+                    store = new RedisDataStore();
+                    break;
+                }
+                case 'MEMCACHE': {
+                    LOGGER.warn('Using memcache as data cache');
+                    store = new MemcacheDataStore();
+                    break;
+                }
+                default: {
+                    LOGGER.warn('Invalid data cache specified - using memory cache');
+                    store = new MemoryDataStore();
+                    break;
+                }
             }
         }
     }
