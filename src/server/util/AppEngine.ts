@@ -1,9 +1,9 @@
-const { GAE_APPLICATION, GOOGLE_CLOUD_PROJECT } = process.env;
+const { GAE_APPLICATION, GOOGLE_CLOUD_PROJECT, REGION } = process.env;
 
 console.log(`GAE_APPLICATION: ${GAE_APPLICATION}`);
 
 const region = (): string | null => (
-    GAE_APPLICATION ? GAE_APPLICATION.split('~')[0] : null
+    REGION || (GAE_APPLICATION ? GAE_APPLICATION.split('~')[0] : null)
 );
 
 export const serviceUri = (service: string): string => (
