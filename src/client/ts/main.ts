@@ -43,7 +43,7 @@ const setupVersionCheck = async () => {
         
         if (newVersion !== window["clientVersion"])
             window.location.reload();
-    }, 600000);
+    }, 900000);
 };
 
 setupVersionCheck();
