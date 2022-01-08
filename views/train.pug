@@ -7,9 +7,12 @@ html
         meta(name="tracker" content="train")
         title CTA Info Sign
         link(rel="stylesheet" href="/static/stylesheets/cta.css")
-        script(src="https://requirejs.org/docs/release/2.3.6/minified/require.js" data-main="/static/scripts/cta.min")
+        script(src="https://requirejs.org/docs/release/2.3.6/minified/require.js" data-main=`/static/scripts/cta${process.env.DEVELOPMENT ? '' : '.min'}`)
         script(src="https://kit.fontawesome.com/04a7ede306.js" crossorigin="anonymous")
     body
+        #error(alt="Connection Failed")
+            .detail-container
+                .detail A general error has occurred.
         .info.hidden.gone
             #datetime
                 #time

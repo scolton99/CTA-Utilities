@@ -12,5 +12,26 @@ export class TrainSignboard extends AbstractSignboard {
     protected getPanes(): Array<IPane> {
         return [new InfoPane(), new AlertsPane(), new ArrivalsPane()];
     }
+
+    private errorDiv(): HTMLElement | null {
+        return document.getElementById("error");
+    }
+
+    private errorDetail(): Element | null | undefined {
+        return this.errorDiv()?.children[0]?.children[0];
+    }
+
+    protected showError(msg: string): void {
+        const div = this.errorDiv();
+        const detail = this.errorDetail();
+        if (detail)
+            detail.textContent = msg;
+        
+        div?.classList.add('active');    
+    }
+
+    protected clearError(): void {
+        this.errorDiv()?.classList.remove('active');
+    }
 }
 

@@ -3,16 +3,16 @@ import Alert from '../models/Alert';
 import getStationId from '../util/StationID';
 
 export default class AlertsPane extends AbstractPane {
-    private static readonly ALERTS_REFRESH_DELAY_MS = 5 * 60 * 1000;
-    private readonly ALERT_INTERVAL: number;
-    
+    private static readonly ALERTS_REFRESH_DELAY_MS = 1 * 60 * 1000;
+
+    private currentError: string = '';
     private alerts: Array<Alert> = [];
-    private currentAlert = -1;
+    private currentAlert         = -1;
     
     public constructor() {
         super(AlertsPane.findElement());
         this.updateAlerts().then();
-        this.ALERT_INTERVAL = window.setInterval(this.updateAlerts, AlertsPane.ALERTS_REFRESH_DELAY_MS);
+        window.setInterval(this.updateAlerts, AlertsPane.ALERTS_REFRESH_DELAY_MS);
     }
     
     protected static findElement = (): HTMLElement => {
@@ -21,6 +21,9 @@ export default class AlertsPane extends AbstractPane {
     
     public override prepare = async (): Promise<void> => {
         this.reRenderAlert();
+
+        if (this.currentError)
+            throw new Error(this.currentError);
     };
     
     public override shouldSkip = (): boolean => {
@@ -30,7 +33,12 @@ export default class AlertsPane extends AbstractPane {
     private readonly updateAlerts = async (): Promise<void> => {
         const stationId = getStationId();
         
-        this.alerts = await Alert.getCurrentAlerts(stationId);
+        try {
+            this.alerts = await Alert.getCurrentAlerts(stationId);
+            this.currentError = '';
+        } catch (e: any) {
+            this.currentError = 'Trouble fetching alerts from server.';
+        }
     };
     
     private readonly reRenderAlert = (): void => {

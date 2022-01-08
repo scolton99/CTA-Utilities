@@ -4,6 +4,7 @@ import getStationId from '../util/StationID';
 
 export default class ArrivalsPane extends AbstractPane {
     private arrivals: Array<Arrival>;
+    private lastSuccessfulUpdate: Date | null = null;
     
     public constructor() {
         super(ArrivalsPane.findElement());
@@ -21,15 +22,28 @@ export default class ArrivalsPane extends AbstractPane {
     };
     
     public prepare = async (): Promise<void> => {
-        await this.updateArrivals();
-        this.reRenderArrivals();
+        try {
+            await this.updateArrivals();
+        } finally {
+            this.reRenderArrivals();
+        }
     };
     
     private readonly updateArrivals = async (): Promise<void> => {
         const stationId: number = getStationId();
         
-        this.arrivals = await Arrival.getArrivals(stationId);
-        console.log(`Updated arrivals: ${this.arrivals.length}`);
+        try {
+            this.arrivals = await Arrival.getArrivals(stationId);
+            console.log(`Updated arrivals: ${this.arrivals.length}`);
+            this.lastSuccessfulUpdate = new Date();
+        } catch (e: any) {
+            let message = 'Trouble fetching arrivals from server.';
+
+            if (this.lastSuccessfulUpdate)
+                message += ' Showing data from ' + this.lastSuccessfulUpdate.toLocaleString('en-US') + '.';
+
+            throw new Error(message);
+        }
     };
     
     private readonly reRenderArrivals = (): void => {
