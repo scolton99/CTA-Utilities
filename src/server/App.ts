@@ -10,6 +10,7 @@ import stationIdDecoder from './middleware/StationIDDecoder';
 import notFound from './middleware/NotFound';
 import { verifySecrets } from './util/Secrets';
 import RequestLogger from './middleware/RequestLogger';
+import { hashElement } from 'folder-hash';
 
 const { exit, env: { PORT, DEVELOPMENT, VERBOSE } } = process;
 
@@ -49,6 +50,22 @@ const setup = (): void => {
             stationName: req.params.station,
             stationId: req.stationId
         });
+    });
+
+    SERVER.get('/client-version', async (req, res) => {
+        const hash = await hashElement('.', {
+            folders: {
+                include: ['public/**', 'public'],
+                matchPath: true
+            },
+            files: {
+                include: ['public/**/*'],
+                exclude: ['*.map', '.*'],
+                matchPath: true
+            }
+        });
+
+        res.send(hash.hash);
     });
 
     SERVER.use(notFound);

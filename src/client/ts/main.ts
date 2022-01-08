@@ -24,6 +24,30 @@ switch (pageType) {
     }
 }
 
+const getVersion = async (): Promise<string | null> => {
+    const result = await fetch('/client-version');
+
+    if (!result.ok) {
+        console.error('Trouble fetching current client version.');
+        return null;
+    }
+
+    return await result.text();
+};
+
+const setupVersionCheck = async () => {
+    window["clientVersion"] = await getVersion();
+
+    window.setInterval(async () => {
+        const newVersion = await getVersion();
+        
+        if (newVersion !== window["clientVersion"])
+            window.location.reload();
+    }, 600000);
+};
+
+setupVersionCheck();
+
 require(modules, module => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     window[className] = new module[className]();

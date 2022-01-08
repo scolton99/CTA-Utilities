@@ -18,7 +18,7 @@ export default class ArrivalsPane extends AbstractPane {
     
     private static readonly calculateMaxArrivals = (): number => {
         const w = window.innerWidth;
-        return Math.floor(window.innerHeight / (1.15 * ((0.05 + 0.021) * w)));
+        return Math.floor(window.innerHeight / (1.05 * (0.089 * w)));
     };
     
     public prepare = async (): Promise<void> => {
@@ -56,6 +56,7 @@ export default class ArrivalsPane extends AbstractPane {
         const realArrivals = this.arrivals.filter((x: Arrival) => x.getArrivalTs().getTime() > ts.getTime());
         realArrivals.sort((arrival1, arrival2) => (arrival1.arrivalMs(ts) - arrival2.arrivalMs(ts)));
         
+        console.log(maxScn);
         const realMax = Math.min(maxScn, realArrivals.length);
         
         const arrivalsDom: Array<Node> = [];
