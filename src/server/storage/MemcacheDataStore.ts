@@ -4,7 +4,7 @@ import { serviceUri } from '../util/AppEngine';
 import Logger from '../util/Logger';
 
 export default class MemcacheDataStore implements IDataStore {
-    private readonly SERVICE_URI: string = serviceUri('cache');
+    private readonly SERVICE_URI: string = process.env.MEMCACHE_URL || serviceUri('cache');
     private readonly LOGGER: Logger = new Logger(MemcacheDataStore);
     
     public constructor() {
