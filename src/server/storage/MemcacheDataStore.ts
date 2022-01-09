@@ -22,10 +22,14 @@ export default class MemcacheDataStore implements IDataStore {
     }
     
     public async get(key: string): Promise<string | null> {
-        const res = await fetch(`${this.SERVICE_URI}/get`, {
+        const reqBody = {
             method: 'POST',
             body: JSON.stringify({ key })
-        });
+        };
+
+        const res = await fetch(`${this.SERVICE_URI}/get`, reqBody);
+
+        this.LOGGER.log(`MEMCACHE FETCH ${key} : ${res.status === 404 ? 'MISS' : 'HIT'} (${this.SERVICE_URI}/get ${reqBody})`);
         
         if (res.status === 404)
             return null;
