@@ -29,7 +29,7 @@ export default class MemcacheDataStore implements IDataStore {
 
         const res = await fetch(`${this.SERVICE_URI}/get`, reqBody);
 
-        this.LOGGER.log(`MEMCACHE FETCH ${key} : ${res.status === 404 ? 'MISS' : 'HIT'} (${this.SERVICE_URI}/get ${reqBody})`);
+        this.LOGGER.log(`MEMCACHE FETCH ${key} : ${res.status === 404 ? 'MISS' : 'HIT'} (${this.SERVICE_URI}/get ${JSON.stringify(reqBody)})`);
         
         if (res.status === 404)
             return null;
