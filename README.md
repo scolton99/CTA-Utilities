@@ -1,5 +1,5 @@
 # Station Names
-Once the server is running, navigate to `/[code]` to see information for that station.
+Once the server is running, navigate to `/train/[code]` to see information for that station.
 
 ## Red Line
 | Station Name | URL Code | 
