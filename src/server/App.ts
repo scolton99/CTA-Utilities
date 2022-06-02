@@ -4,6 +4,7 @@ dotenv.config();
 import Logger from './util/Logger';
 
 import express from 'express';
+import busApiRouter from './controllers/BusAPI';
 import trainApiRouter from './controllers/TrainAPI';
 import dialogueRouter from './controllers/Dialogue';
 import stationIdDecoder from './middleware/StationIDDecoder';
@@ -42,6 +43,8 @@ const setup = (): void => {
     SERVER.use('/train/api', trainApiRouter);
     SERVER.use('/dialogue', dialogueRouter);
 
+    SERVER.use('/bus/api', busApiRouter);
+
     SERVER.get('/train/:station', stationIdDecoder, (req, res, next) => {
         if (!req.stationId)
         { next(); return; }
@@ -78,5 +81,3 @@ const start = (): void => {
 };
 
 main();
-
-
