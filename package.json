@@ -11,7 +11,7 @@
   "author": "Spencer Colton",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/memcache": "^1.5.1",
+    "@google-cloud/memcache": "^2.0.0",
     "@types/express": "^4.17.7",
     "@types/node": "^14.0.22",
     "@types/node-fetch": "^2.5.7",
