@@ -35,18 +35,18 @@ const getVersion = async (): Promise<string | null> => {
     return await result.text();
 };
 
-const setupVersionCheck = async () => {
-    window["clientVersion"] = await getVersion();
+const setupVersionCheck = async (): Promise<void> => {
+    window['clientVersion'] = await getVersion();
 
     window.setInterval(async () => {
         const newVersion = await getVersion();
         
-        if (newVersion !== window["clientVersion"])
+        if (newVersion !== window['clientVersion'])
             window.location.reload();
     }, 900000);
 };
 
-setupVersionCheck();
+setupVersionCheck().then();
 
 require(modules, module => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

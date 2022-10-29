@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ESNext",
     "sourceMap": true,
     "out": "../../public/scripts/cta.js",
-    "lib": ["DOM", "ES7", "ES2016"],
+    "lib": ["DOM", "ESNext"],
     "module": "AMD",
     "baseUrl": "ts",
     "allowJs": true,

@@ -36,7 +36,7 @@ export default class ArrivalsPane extends AbstractPane {
             this.arrivals = await Arrival.getArrivals(stationId);
             console.log(`Updated arrivals: ${this.arrivals.length}`);
             this.lastSuccessfulUpdate = new Date();
-        } catch (e: any) {
+        } catch (e: unknown) {
             let message = 'Trouble fetching arrivals from server.';
 
             if (this.lastSuccessfulUpdate)

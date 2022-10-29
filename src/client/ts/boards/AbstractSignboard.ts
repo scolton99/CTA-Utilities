@@ -39,8 +39,9 @@ export default abstract class AbstractSignboard {
             try {
                 await nextPane.prepare();
                 this.ERRORS[currentPane] = '';
-            } catch (e: any) {
-                this.ERRORS[currentPane] = e.message;
+            } catch (e: unknown) {
+                if (e instanceof Error)
+                    this.ERRORS[currentPane] = e['message'];
             }
 
             if (this.ERRORS.find(it => !!it))
@@ -50,8 +51,9 @@ export default abstract class AbstractSignboard {
                 
             await prevPane?.hide();
             await nextPane.show();
-            
-            window.setTimeout(cycleTick, this.getCycleTime());
+
+            if (!window.location.hash.includes('pause'))
+                window.setTimeout(cycleTick, this.getCycleTime());
         };
         
         return cycleTick;

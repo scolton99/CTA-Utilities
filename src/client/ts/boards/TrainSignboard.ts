@@ -10,15 +10,22 @@ export class TrainSignboard extends AbstractSignboard {
     }
     
     protected getPanes(): Array<IPane> {
-        return [new InfoPane(), new AlertsPane(), new ArrivalsPane()];
-    }
+        const panes = {
+            info:     new InfoPane(),
+            alerts:   new AlertsPane(),
+            arrivals: new ArrivalsPane()
+        };
+        
+        const hash = window.location.hash;
+        if (hash !== '') {
+            const parts = hash.substr(1).split(',');
+            for (const paneName of Object.keys(panes)) {
+                if (!parts.includes(paneName))
+                    delete panes[paneName];
+            }
+        }
 
-    private errorDiv(): HTMLElement | null {
-        return document.getElementById("error");
-    }
-
-    private errorDetail(): Element | null | undefined {
-        return this.errorDiv()?.children[0]?.children[0];
+        return Object.values(panes);
     }
 
     protected showError(msg: string): void {
@@ -26,12 +33,20 @@ export class TrainSignboard extends AbstractSignboard {
         const detail = this.errorDetail();
         if (detail)
             detail.textContent = msg;
-        
-        div?.classList.add('active');    
+
+        div?.classList.add('active');
     }
 
     protected clearError(): void {
         this.errorDiv()?.classList.remove('active');
+    }
+
+    private errorDiv(): HTMLElement | null {
+        return document.getElementById('error');
+    }
+
+    private errorDetail(): Element | null | undefined {
+        return this.errorDiv()?.children[0]?.children[0];
     }
 }
 

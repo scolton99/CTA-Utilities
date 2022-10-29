@@ -53,6 +53,14 @@ div.arrivals {
       > div.train-entry-timing {
         font-size: 5vw;
       }
+
+      > div.train-entry-tracking {
+        > img {
+          height: 2.4em;
+          width: auto;
+          padding: 0 1em;
+        }
+      }
     }
   }
 }

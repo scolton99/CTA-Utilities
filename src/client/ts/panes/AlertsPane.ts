@@ -3,9 +3,9 @@ import Alert from '../models/Alert';
 import getStationId from '../util/StationID';
 
 export default class AlertsPane extends AbstractPane {
-    private static readonly ALERTS_REFRESH_DELAY_MS = 1 * 60 * 1000;
+    private static readonly ALERTS_REFRESH_DELAY_MS = 60 * 1000;
 
-    private currentError: string = '';
+    private currentError         = '';
     private alerts: Array<Alert> = [];
     private currentAlert         = -1;
     
@@ -36,7 +36,7 @@ export default class AlertsPane extends AbstractPane {
         try {
             this.alerts = await Alert.getCurrentAlerts(stationId);
             this.currentError = '';
-        } catch (e: any) {
+        } catch (e: unknown) {
             this.currentError = 'Trouble fetching alerts from server.';
         }
     };
@@ -56,7 +56,7 @@ export default class AlertsPane extends AbstractPane {
         const alertTimestamp = <HTMLElement>      this.rootDom.getElementsByClassName('alert-footer-timestamp')[0];
         
         alertBody.textContent    = alert.getDescription();
-        alertTypeImage.src      = `/static/images/${alert.getIcon()}.svg`;
+        alertTypeImage.src       = `/static/images/${alert.getIcon()}.svg`;
         alertType.textContent    = alert.getImpact();
         alertTimestamp.innerHTML = alert.timestampString();
         

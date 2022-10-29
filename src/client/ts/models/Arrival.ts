@@ -99,6 +99,17 @@ export default class Arrival extends SharedArrival {
         }
 
         bodyDom.append(timing);
+
+        const tracking = document.createElement('div');
+        tracking.classList.add('train-entry-tracking');
+
+        const trackingImage = document.createElement('img');
+        trackingImage.alt = '';
+        trackingImage.src = this.scheduled ? '/static/images/scheduled.svg' : '/static/images/live-tracked.svg';
+
+        tracking.append(trackingImage);
+        bodyDom.append(tracking);
+
         container.append(bodyDom);
 
         return container;
