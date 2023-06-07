@@ -21,4 +21,8 @@ div.arrivals {
     background-color: #fff;
     color: map.get($lines, "green");
   }
+  div.train-entry[data-line="blue"].inverted > div.train-entry-body {
+    background-color: #fff;
+    color: map.get($lines, "blue");
+  }
 }

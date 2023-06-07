@@ -11,7 +11,8 @@ export type Destination =
     'Linden' |
     '54th/Cermak' |
     'Kimball' |
-    'Midway';
+    'Midway' | 
+    'UIC-Halsted';
 
 export type ExternalLineName = 'Red' | 'Org' | 'Y' | 'G' | 'Blue' | 'P' | 'Pink' | 'Brn';
 export type DisplayLineName  = 'Red' | 'Orange' | 'Yellow' | 'Green' | 'Blue' | 'Purple' | 'Pink' | 'Brown';
@@ -53,6 +54,7 @@ const destinations: DestinationLineMap = {
     'Cottage Grove': ['Green'],
     'O\'Hare': ['Blue'],
     'Forest Park': ['Blue'],
+    'UIC-Halsted': ['Blue'],
     'Linden': ['Purple'],
     '54th/Cermak': ['Pink'],
     'Kimball': ['Brown'],
@@ -80,7 +82,8 @@ const staticDestinationCodes: StaticDestinationCodes = {
     },
     'Blue': {
         'O\'Hare': 1,
-        'Forest Park': 5
+        'Forest Park': 5,
+        'UIC-Halsted': 5
     },
     'Purple': {
         'Howard': 5,
