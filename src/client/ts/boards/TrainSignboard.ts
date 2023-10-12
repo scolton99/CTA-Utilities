@@ -6,7 +6,7 @@ import IPane from '../panes/IPane';
 
 export class TrainSignboard extends AbstractSignboard {
     protected getCycleTime(): number {
-        return 9 * 1000;
+        return 5 * 1000;
     }
     
     protected getPanes(): Array<IPane> {
