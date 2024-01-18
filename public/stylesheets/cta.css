@@ -1,0 +1,286 @@
+.hidden {
+    opacity: 0
+}
+
+div.gone:not(p) {
+    display: none
+}
+
+.bold {
+    font-weight: bold
+}
+
+div.train-entry[data-line=red]>div.train-entry-body {
+    background-color: #c60c30
+}
+
+div.train-entry[data-line=blue]>div.train-entry-body {
+    background-color: #00a1de
+}
+
+div.train-entry[data-line=brown]>div.train-entry-body {
+    background-color: #62361b
+}
+
+div.train-entry[data-line=green]>div.train-entry-body {
+    background-color: #009b3a
+}
+
+div.train-entry[data-line=orange]>div.train-entry-body {
+    background-color: #f9461c
+}
+
+div.train-entry[data-line=pink]>div.train-entry-body {
+    background-color: #e27ea6
+}
+
+div.train-entry[data-line=purple]>div.train-entry-body {
+    background-color: #522398
+}
+
+div.train-entry[data-line=yellow]>div.train-entry-body {
+    background-color: #f9e300
+}
+
+div.arrivals div.train-entry[data-line=green].inverted>div.train-entry-body {
+    background-color: #fff;
+    color: #009b3a
+}
+
+div.alert-container {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    padding: 2vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+div.alert-container>header.alert-header {
+    font-size: 4vw
+}
+
+div.alert-container>header.alert-header span.alert-header-text {
+    margin-left: 1vw
+}
+
+div.alert-container>div.alert-body {
+    font-weight: bold;
+    font-size: 4vw
+}
+
+div.alert-container>footer.alert-footer {
+    display: flex;
+    font-size: 3vw;
+    color: #aaa
+}
+
+div.alert-container>footer.alert-footer>span.alert-footer-type-image-container {
+    margin-right: 1vw
+}
+
+div.alert-container>footer.alert-footer>span.alert-footer-type {
+    margin-right: 2vw
+}
+
+div.alert-container>footer.alert-footer img {
+    height: 3vw;
+    width: auto
+}
+
+div.arrivals {
+    background-color: #000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2vw;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center
+}
+
+div.arrivals div.train-entry {
+    display: flex;
+    margin-bottom: 1px;
+    width: 100%
+}
+
+div.arrivals div.train-entry:not([data-line=yellow])>div.train-entry-body {
+    color: #fff
+}
+
+div.arrivals div.train-entry[data-line=yellow]>div.train-entry-body {
+    color: #000
+}
+
+div.arrivals div.train-entry>div.train-entry-number {
+    background-color: #333;
+    color: #ddd;
+    font-weight: bold;
+    padding: .25em .5em 0 .5em;
+    font-size: 2.1vw
+}
+
+div.arrivals div.train-entry>div.train-entry-body {
+    flex-grow: 1;
+    padding: .25em .5em;
+    display: flex;
+    align-items: center
+}
+
+div.arrivals div.train-entry>div.train-entry-body>div.train-entry-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1
+}
+
+div.arrivals div.train-entry>div.train-entry-body>div.train-entry-details>span.train-entry-run-info {
+    font-size: 2.1vw
+}
+
+div.arrivals div.train-entry>div.train-entry-body>div.train-entry-details>span.train-entry-dest {
+    font-weight: bold;
+    font-size: 5vw
+}
+
+div.arrivals div.train-entry>div.train-entry-body>div.train-entry-timing {
+    font-size: 5vw
+}
+
+div.arrivals div.train-entry>div.train-entry-body>div.train-entry-tracking>img {
+    height: 3.5vw;
+    width: auto;
+    padding: 0 1.7vw
+}
+
+.info {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    justify-content: space-evenly;
+    align-items: center
+}
+
+.info>div {
+    width: 23vw;
+    height: 23vw;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1vw;
+    box-sizing: border-box
+}
+
+.info #time {
+    font-weight: bold;
+    font-size: 5.6vw
+}
+
+.info #ampm-marker {
+    font-size: 4.5vw
+}
+
+.info #date {
+    font-size: 3.8vw
+}
+
+.info #temperature-text {
+    font-weight: bold
+}
+
+.info #weather-description {
+    font-size: 3.8vw
+}
+
+.info #temperature-text {
+    font-size: 5.6vw;
+    font-weight: bold
+}
+
+.info #temperature-icon {
+    position: relative;
+    top: 2vw;
+    height: 8vw;
+    width: auto
+}
+
+.info #no-smoking-text {
+    font-size: 3.8vw
+}
+
+.info #no-smoking-icon {
+    height: 7vw;
+    width: auto
+}
+
+.info #cta-logo {
+    height: 7vw;
+    width: auto
+}
+
+html,
+body {
+    font-family: sans-serif;
+    height: 100%;
+    margin: 0;
+    background-color: #000
+}
+
+body>div:not(#error) {
+    transition: opacity 1s ease-out
+}
+
+#error {
+    position: fixed;
+    inset: 0 0 auto auto;
+    z-index: 9000;
+    opacity: 0;
+    transition: opacity .9s;
+    pointer-events: none
+}
+
+#error.active {
+    opacity: 1;
+    pointer-events: all
+}
+
+#error:before {
+    content: "⚠️";
+    font-size: 5vw
+}
+
+#error>.detail-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    pointer-events: none;
+    width: 25vw;
+    display: flex;
+    justify-content: end
+}
+
+#error>.detail-container>.detail {
+    padding: 10px;
+    margin: 3px;
+    background-color: #263238;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+    color: #eee;
+    font-size: 1.5vw
+}
+
+#error>.detail-container:hover>.detail {
+    opacity: 1
+}
+
+#error:hover .detail {
+    opacity: 1
+}
+
+/*# sourceMappingURL=cta.css.map */

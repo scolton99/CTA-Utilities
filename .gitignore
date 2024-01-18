@@ -1,10 +1,5 @@
 .env
 
-public/stylesheets/*
-public/scripts/*
-!public/scripts/.gitkeep
-!public/stylesheets/.gitkeep
-
 node_modules
 
 dist/*

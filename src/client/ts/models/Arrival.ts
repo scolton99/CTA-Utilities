@@ -45,6 +45,9 @@ export default class Arrival extends SharedArrival {
         if (this.line === 'Green' && this.destination === 'Cottage Grove') {
             container.classList.add('inverted');
         }
+        else if (this.line === 'Blue' && this.destination === 'UIC-Halsted') {
+            container.classList.add('inverted');
+        }
 
         const numberDom = document.createElement('div');
         numberDom.classList.add('train-entry-number');
