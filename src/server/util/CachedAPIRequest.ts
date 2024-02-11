@@ -21,7 +21,7 @@ export default class CachedAPIRequest {
         let key;
         if (link.includes('openweathermap')) {
             key = 'appid';
-        } else if (link.includes('transitchicago')) {
+        } else if (link.includes('transitchicago') || link.includes('ctabustracker')) {
             key = 'key';
         }
         return link.replace(new RegExp(`${key}=[0-9a-f]+?(?=&|$)`, 'm'), `${key}=REDACTED`);

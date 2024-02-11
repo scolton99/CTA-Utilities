@@ -1,6 +1,6 @@
 import AbstractPane from './AbstractPane';
 import Arrival from '../models/Arrival';
-import getStationId from '../util/StationID';
+import { getStationId } from '../util/StationID';
 
 export default class ArrivalsPane extends AbstractPane {
     private arrivals: Array<Arrival>;

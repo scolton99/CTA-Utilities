@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "sourceMap": true,
-    "out": "../../public/scripts/cta.js",
+    "outFile": "../../public/scripts/cta.js",
     "lib": ["DOM", "ESNext"],
     "module": "AMD",
     "baseUrl": "ts",

@@ -2,7 +2,7 @@ import Logger from './Logger';
 
 const LOGGER = new Logger({ name: 'Secrets' });
 
-export const { OW_AK, CTA_AK } = process.env;
+export const { OW_AK, CTA_AK, CTA_BUS_AK } = process.env;
 
 const empty = (string: string | null | undefined): boolean => {
     return typeof(string) === 'undefined' || string === null || string.length === 0;

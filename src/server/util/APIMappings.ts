@@ -1,4 +1,4 @@
-import { OW_AK, CTA_AK } from './Secrets';
+import { OW_AK, CTA_AK, CTA_BUS_AK } from './Secrets';
 
 const WEATHER_CITY_ID = 4887398;
 
@@ -14,6 +14,12 @@ const apiMappings: APIMappings = {
     ),
     'weather': (): string => (
         `https://api.openweathermap.org/data/2.5/weather?id=${WEATHER_CITY_ID}&appid=${OW_AK}`
+    ),
+    'bus-arrivals': (identifier: string): string => (
+        `https://www.ctabustracker.com/bustime/api/v2/getpredictions?key=${CTA_BUS_AK}&format=json&stpid=${identifier}`
+    ),
+    'bus-time': (): string => (
+        `https://www.ctabustracker.com/bustime/api/v2/gettime?key=${CTA_BUS_AK}&format=json`
     )
 };
 
