@@ -19,7 +19,7 @@
     "@types/requirejs": "^2.1.32",
     "body-parser": "^1.20.1",
     "dotenv": "^8.2.0",
-    "express": "^5.0.1",
+    "express": "^5.2.0",
     "folder-hash": "^4.0.1",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.35",
