@@ -1,15 +1,17 @@
 {
   "steps": [
     {
-      "name": "gcr.io/cloud-builders/gsutil",
-      "args": ["cp", "gs://cta-backend/private/app.yaml", "app.yaml"]
+      "name": "gcr.io/cloud-builders/gcloud",
+      "args": ["storage", "cp", "gs://cta-backend/private/app.yaml", "app.yaml"]
     },
     {
-      "name": "gcr.io/cloud-builders/npm",
+      "name": "node:lts",
+      "entrypoint": "npm",
       "args": ["install"]
     },
     {
-      "name": "gcr.io/cloud-builders/npm",
+      "name": "node:lts",
+      "entrypoint": "npm",
       "args": ["run", "gcp-build"]
     },
     {
