@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import Arrival from '../models/Arrival';
-import Alert from '../models/Alert';
-import CachedAPIRequest from '../util/CachedAPIRequest';
-import CORS from '../middleware/CORS';
+import Arrival from '../models/Arrival.js';
+import Alert from '../models/Alert.js';
+import CachedAPIRequest from '../util/CachedAPIRequest.js';
+import CORS from '../middleware/CORS.js';
 
 const router = Router();
 

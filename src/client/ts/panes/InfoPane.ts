@@ -8,7 +8,7 @@ export default class InfoPane extends AbstractPane {
     private readonly TICK_INTERVAL: number;
     private readonly WEATHER_UPDATE_INTERVAL: number;
     
-    private currentWeather: Weather;
+    private currentWeather?: Weather;
     
     public constructor() {
         super(InfoPane.findElement());
@@ -38,6 +38,9 @@ export default class InfoPane extends AbstractPane {
         
         if (!temperatureText|| !weatherDescription)
             throw new Error('DOM not properly structured: missing #temperature-text or #weather-description');
+
+        if (!this.currentWeather)
+            throw new Error('Current weather is undefined.');
         
         temperatureText.innerHTML      = `${this.currentWeather.getTemp()}&deg;`;
         temperatureIcon.src            = this.currentWeather.getIcon();

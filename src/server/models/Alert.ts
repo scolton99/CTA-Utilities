@@ -1,6 +1,6 @@
-import SharedAlert, { AlertJSON } from '../../shared/models/Alert';
-import CachedAPIRequest from '../util/CachedAPIRequest';
-import { ServiceType } from '../../shared/util/CTAData';
+import SharedAlert, { AlertJSON } from '../../shared/models/Alert.js';
+import CachedAPIRequest from '../util/CachedAPIRequest.js';
+import { ServiceType } from '../../shared/util/CTAData.js';
 
 /*
  * Have to disable ESLint since this is the CTA API and

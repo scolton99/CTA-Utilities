@@ -1,8 +1,8 @@
-import MemoryDataStore from './MemoryDataStore';
-import IDataStore from './IDataStore';
-import RedisDataStore from './RedisDataStore';
-import Logger from '../util/Logger';
-import MemcacheDataStore from './MemcacheDataStore';
+import MemoryDataStore from './MemoryDataStore.js';
+import IDataStore from './IDataStore.js';
+import RedisDataStore from './RedisDataStore.js';
+import Logger from '../util/Logger.js';
+import MemcacheDataStore from './MemcacheDataStore.js';
 
 const { DATA_STORE } = process.env;
 

@@ -1,15 +1,15 @@
-import DataStore from '../storage/DataStore';
-import APIMappings, { expirations, APIName } from './APIMappings';
+import DataStore from '../storage/DataStore.js';
+import APIMappings, { expirations, APIName } from './APIMappings.js';
 import fetch from 'node-fetch';
-import Logger from './Logger';
+import Logger from './Logger.js';
 
 export default class CachedAPIRequest {
     private static readonly LOGGER: Logger = new Logger(CachedAPIRequest);
     
-    private readonly API_NAME:   APIName;
-    private readonly IDENTIFIER: string;
+    private readonly API_NAME:    APIName;
+    private readonly IDENTIFIER?: string;
     
-    private requestUuid: string;
+    private requestUuid?: string;
 
     public constructor(name: APIName, identifier?: string) {
         this.API_NAME   = name;

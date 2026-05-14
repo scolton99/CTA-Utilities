@@ -9,7 +9,7 @@ export default class Logger implements Console {
     private static readonly CONSOLE: Console = global.console;
     
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    public readonly Console: NodeJS.ConsoleConstructor = global.console.Console;
+    public readonly Console = global.console.Console;
     
     public assert         = Logger.CONSOLE.assert;
     public clear          = Logger.CONSOLE.clear;
@@ -30,7 +30,7 @@ export default class Logger implements Console {
     public timeStamp      = Logger.CONSOLE.timeStamp;
     public trace          = Logger.CONSOLE.trace;
     
-    private readonly CLASS_NAME: string;
+    private readonly CLASS_NAME?: string;
     
     public constructor(clazz?: Named) {
         if (clazz)

@@ -1,7 +1,7 @@
-import IDataStore from './IDataStore';
+import IDataStore from './IDataStore.js';
 import fetch from 'node-fetch';
-import { serviceUri } from '../util/AppEngine';
-import Logger from '../util/Logger';
+import { serviceUri } from '../util/AppEngine.js';
+import Logger from '../util/Logger.js';
 
 export default class MemcacheDataStore implements IDataStore {
     private readonly SERVICE_URI: string = process.env.MEMCACHE_URL || serviceUri('cache');

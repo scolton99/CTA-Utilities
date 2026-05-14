@@ -1,5 +1,5 @@
-import IDataStore from './IDataStore';
-import Logger from '../util/Logger';
+import IDataStore from './IDataStore.js';
+import Logger from '../util/Logger.js';
 
 interface MemoryDataStoreRecord {
   value: string,

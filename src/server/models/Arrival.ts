@@ -1,6 +1,6 @@
-import SharedArrival, { ArrivalJSON } from '../../shared/models/Arrival';
-import CachedAPIRequest from '../util/CachedAPIRequest';
-import { Destination, ExternalLineName, lineMap } from '../../shared/util/CTAData';
+import SharedArrival, { ArrivalJSON } from '../../shared/models/Arrival.js';
+import CachedAPIRequest from '../util/CachedAPIRequest.js';
+import { Destination, ExternalLineName, lineMap } from '../../shared/util/CTAData.js';
 import moment from 'moment-timezone';
 
 interface ArrivalAPIResponseEntry {

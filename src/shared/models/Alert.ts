@@ -9,16 +9,16 @@ export interface AlertJSON {
 }
 
 export default abstract class Alert {
-    protected start: Date;
-    protected end:   Date | null;
+    protected start!: Date;
+    protected end!:   Date | null;
     
-    protected icon: string;
+    protected icon!: string;
     
-    protected id: number;
+    protected id!: number;
     
-    protected headline:    string;
-    protected description: string;
-    protected impact:      string;
+    protected headline!:    string;
+    protected description!: string;
+    protected impact!:      string;
 
     public timestampString(): string {
         const dateOptions: Readonly<Record<string, string>> = {

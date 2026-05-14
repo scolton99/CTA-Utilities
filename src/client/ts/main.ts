@@ -1,3 +1,5 @@
+import { TrainSignboard } from "./boards/TrainSignboard";
+
 const pageTypeMetaElement = document.querySelector('meta[name="tracker"]');
 
 if (!pageTypeMetaElement)
@@ -6,19 +8,18 @@ if (!pageTypeMetaElement)
 const pageType = pageTypeMetaElement.getAttribute('content');
 
 const modules: Array<string> = [];
-let className;
+let className: string;
 
 switch (pageType) {
     case 'train': {
-        modules.push('client/ts/boards/TrainSignboard');
-        className = 'TrainSignboard';
+        window.TrainSignboard = new TrainSignboard();
         break;
     }
-    case 'bus': {
-        modules.push('client/ts/boards/BusSignboard');
-        className = 'BusSignboard';
-        break;
-    }
+    // case 'bus': {
+    //     modules.push('client/ts/boards/BusSignboard');
+    //     className = 'BusSignboard';
+    //     break;
+    // }
     default: {
         throw new Error(`Invalid page type: ${pageType}. Expected 'train' or 'bus'.`);
     }
@@ -36,19 +37,14 @@ const getVersion = async (): Promise<string | null> => {
 };
 
 const setupVersionCheck = async (): Promise<void> => {
-    window['clientVersion'] = await getVersion();
+    window.clientVersion = await getVersion();
 
     window.setInterval(async () => {
         const newVersion = await getVersion();
         
-        if (newVersion !== window['clientVersion'])
+        if (newVersion !== window.clientVersion)
             window.location.reload();
     }, 900000);
 };
 
 setupVersionCheck().then();
-
-require(modules, module => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    window[className] = new module[className]();
-});

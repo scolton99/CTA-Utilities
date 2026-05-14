@@ -1,15 +1,15 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import Logger from './util/Logger';
+import Logger from './util/Logger.js';
 
 import express from 'express';
-import trainApiRouter from './controllers/TrainAPI';
-import dialogueRouter from './controllers/Dialogue';
-import stationIdDecoder from './middleware/StationIDDecoder';
-import notFound from './middleware/NotFound';
-import { verifySecrets } from './util/Secrets';
-import RequestLogger from './middleware/RequestLogger';
+import trainApiRouter from './controllers/TrainAPI.js';
+import dialogueRouter from './controllers/Dialogue.js';
+import stationIdDecoder from './middleware/StationIDDecoder.js';
+import notFound from './middleware/NotFound.js';
+import { verifySecrets } from './util/Secrets.js';
+import RequestLogger from './middleware/RequestLogger.js';
 import { hashElement } from 'folder-hash';
 
 const { exit, env: { PORT, DEVELOPMENT, VERBOSE } } = process;

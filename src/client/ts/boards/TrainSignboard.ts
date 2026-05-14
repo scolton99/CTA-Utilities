@@ -18,10 +18,10 @@ export class TrainSignboard extends AbstractSignboard {
         
         const hash = window.location.hash;
         if (hash !== '') {
-            const parts = hash.substr(1).split(',');
+            const parts = hash.substring(1).split(',');
             for (const paneName of Object.keys(panes)) {
                 if (!parts.includes(paneName))
-                    delete panes[paneName];
+                    delete panes[paneName as keyof typeof panes];
             }
         }
 

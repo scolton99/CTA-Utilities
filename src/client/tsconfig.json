@@ -2,18 +2,19 @@
   "compilerOptions": {
     "target": "ESNext",
     "sourceMap": true,
-    "out": "../../public/scripts/cta.js",
-    "lib": ["DOM", "ESNext"],
-    "module": "AMD",
-    "baseUrl": "ts",
+    "outDir": "../../public/scripts/",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "allowJs": true,
     "types": ["requirejs"],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "rootDir": "../"
   },
   "exclude": [
     "../../node_modules"
   ],
   "include": [
-    "ts/**/*"
+    "ts/**/*",
+    "*.d.ts"
   ]
 }

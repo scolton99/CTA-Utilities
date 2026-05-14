@@ -3,7 +3,7 @@ import Arrival from '../models/Arrival';
 import getStationId from '../util/StationID';
 
 export default class ArrivalsPane extends AbstractPane {
-    private arrivals: Array<Arrival>;
+    private arrivals: Array<Arrival> = [];
     private lastSuccessfulUpdate: Date | null = null;
     
     public constructor() {

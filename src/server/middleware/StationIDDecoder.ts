@@ -1,5 +1,5 @@
 import { Handler } from 'express';
-import { uriSafeStationIdMap as stationIdMap } from '../../shared/util/CTAData';
+import { uriSafeStationIdMap as stationIdMap } from '../../shared/util/CTAData.js';
 
 declare module 'express-serve-static-core' {
     interface Request {
@@ -7,8 +7,8 @@ declare module 'express-serve-static-core' {
     }
 }
 
-const stationIdDecoder: Handler = (req, res, next) => {
-    if (!req.params.station) {
+const stationIdDecoder: Handler = (req, _res, next) => {
+    if (!req.params.station || Array.isArray(req.params.station)) {
         next();
         return;
     }

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { v4 as uuid } from 'uuid';
-import Logger from '../util/Logger';
+import Logger from '../util/Logger.js';
 
 declare module 'express-serve-static-core' {
     interface Request {

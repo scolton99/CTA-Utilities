@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { validateDestination, stationId, getDestinationCode } from '../../shared/util/CTAData';
-import Arrival from '../models/Arrival';
+import { validateDestination, stationId, getDestinationCode } from '../../shared/util/CTAData.js';
+import Arrival from '../models/Arrival.js';
 
 const router = Router();
 

@@ -1,4 +1,4 @@
-import { Destination, DisplayLineName } from '../util/CTAData';
+import { Destination, DisplayLineName } from '../util/CTAData.js';
 
 export interface ArrivalJSON {
     delayed:         boolean,
@@ -15,20 +15,20 @@ export interface ArrivalJSON {
 }
 
 export default abstract class Arrival {
-    protected delayed:     boolean;
-    protected scheduled:   boolean;
-    protected fault:       boolean;
-    protected approaching: boolean;
+    protected delayed!:     boolean;
+    protected scheduled!:   boolean;
+    protected fault!:       boolean;
+    protected approaching!: boolean;
     
     // ex. "Service toward Loop"
-    protected stopDescription: string;
+    protected stopDescription!: string;
     
-    protected runNumber:    number;
-    protected line:         DisplayLineName;
-    protected destination:  Destination; // enum?
-    protected predictionTs: Date;
-    protected arrivalTs:    Date;
-    protected direction:    number;
+    protected runNumber!:    number;
+    protected line!:         DisplayLineName;
+    protected destination!:  Destination; // enum?
+    protected predictionTs!: Date;
+    protected arrivalTs!:    Date;
+    protected direction!:    number;
     
     public countdown(ts: Date): number {
         return Math.round(this.arrivalMs(ts) / (1000 * 60));

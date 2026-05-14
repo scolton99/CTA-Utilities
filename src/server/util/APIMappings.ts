@@ -1,15 +1,15 @@
-import { OW_AK, CTA_AK } from './Secrets';
+import { OW_AK, CTA_AK } from './Secrets.js';
 
 const WEATHER_CITY_ID = 4887398;
 
-type ApiUriGenerator = (x?: string) => string;
+type ApiUriGenerator = ((x?: string) => string) | (() => string);
 type APIMappings = Record<string, ApiUriGenerator>;
 
 const apiMappings: APIMappings = {
-    'arrivals': (identifier: string): string => (
+    'arrivals': (identifier?: string): string => (
         `https://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${CTA_AK}&outputType=JSON&mapid=${identifier}`
     ),
-    'alerts': (identifier: string): string => (
+    'alerts': (identifier?: string): string => (
         `https://lapi.transitchicago.com/api/1.0/alerts.aspx?outputType=JSON&stationid=${identifier}`
     ),
     'weather': (): string => (

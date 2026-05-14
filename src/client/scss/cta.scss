@@ -1,9 +1,9 @@
-@import 'util';
-@import 'colors';
+@use 'util';
+@use 'colors';
 
-@import 'alerts';
-@import 'arrivals';
-@import 'info';
+@use 'alerts';
+@use 'arrivals';
+@use 'info';
 
 html, body {
   font-family: sans-serif;

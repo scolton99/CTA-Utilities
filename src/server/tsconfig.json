@@ -1,34 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "nodenext",
     "esModuleInterop": true,
     "target": "es6",
     "noImplicitAny": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "sourceMap": true,
     "outDir": "../../dist",
-    "baseUrl": "../..",
-    "paths": {
-      "*": [
-        "../../node_modules/*"
-      ]
-    },
-    "types": [
-      "body-parser",
-      "connect",
-      "express",
-      "express-serve-static-core",
-      "mime",
-      "node",
-      "node-fetch",
-      "qs",
-      "range-parser",
-      "redis",
-      "serve-static"
-    ],
     "strictNullChecks": true,
     "noUnusedLocals": true,
-    "lib": ["es2016"]
+    "lib": ["es2016"],
+    "rootDir": "../"
   },
   "include": [
     "./**/*",
