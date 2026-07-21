@@ -18,7 +18,7 @@
     "@google-cloud/memcache": "^4.2.2",
     "@types/node-fetch": "^2.5.7",
     "@types/requirejs": "^2.1.32",
-    "body-parser": "^2.2.2",
+    "body-parser": "^2.3.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.0",
     "folder-hash": "^4.1.1",
