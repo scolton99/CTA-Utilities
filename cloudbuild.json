@@ -19,5 +19,8 @@
       "args": ["app", "deploy"],
       "timeout": "600s"
     }
-  ]
+  ],
+  "options": {
+    "workerRelease": "regular"
+  }
 }
